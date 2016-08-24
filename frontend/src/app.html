@@ -1,0 +1,31 @@
+<template>
+  <require from="./app.css"></require>
+
+  <div class="ui container">
+    <h1>${message}</h1>
+
+    <div class="ui piled ${loading ? 'loading' : ''} segment">
+      <div class="ui relaxed divided list">
+        <div class="item" repeat.for="todo of todos">
+          <div class="right floated content">
+            <i class="circular trash outline link icon"
+               click.trigger="$parent.deleteTodo(todo)"></i>
+          </div>
+          <div class="middle aligned content">
+            <a class="header">${todo.text}</a>
+            <div class="description">2016/08/24 15:20</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form submit.trigger="createTodo()">
+      <div class="ui fluid icon input">
+        <input type="text" placeholder="What I have to do..." value.bind="new_todo.text">
+        <i class="circular plus link icon"
+           click.trigger="createTodo()"></i>
+      </div>
+    </form>
+
+  </div>
+</template>

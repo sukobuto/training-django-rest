@@ -1,0 +1,21 @@
+<template>
+	<require from="elements/form/form-group"></require>
+	<ai-dialog>
+		<ai-dialog-header>${ model.title }</ai-dialog-header>
+
+		<ai-dialog-body>
+			<p>${ model.description }</p>
+			<div class="well content" innerhtml.bind="model.content"></div>
+			<form-group label="${ model.bodyLabel || '返信' }">
+				<textarea rows="10" value.bind="model.body"></textarea>
+			</form-group>
+		</ai-dialog-body>
+
+		<ai-dialog-footer>
+			<button class="btn btn-default" disabled.bind="executing" click.delegate="execute()">
+				<i class="fa fa-spin fa-spinner" show.bind="executing"></i> ${ model.actionLabel || 'OK' }
+			</button>
+			<button class="btn btn-default" click.trigger="controller.cancel()">キャンセル</button>
+		</ai-dialog-footer>
+	</ai-dialog>
+</template>

@@ -93,5 +93,6 @@ ENV/
 .ropeproject
 
 db.*
+node_modules
 
 !.gitkeep
